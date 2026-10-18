@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-skills/
+*.log
+.DS_Store
+coverage/
+.claude/
+.codex/
+.env
+.env.*
+*.tgz

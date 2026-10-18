@@ -1,0 +1,55 @@
+{
+  "name": "@mertsolak/clivoxa",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "description": "Two-way MCP bridge between installed Codex and Claude Code CLIs, with dynamic model discovery and per-call permissions",
+  "license": "MIT",
+  "keywords": ["mcp", "mcp-server", "claude-code", "codex-cli", "sub-agent", "code-review"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mert-solak/clivoxa.git"
+  },
+  "homepage": "https://github.com/mert-solak/clivoxa#readme",
+  "bugs": {
+    "url": "https://github.com/mert-solak/clivoxa/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "clivoxa": "dist/clivoxa.mjs"
+  },
+  "scripts": {
+    "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.json && node scripts/build.mjs",
+    "test": "npm run build && node scripts/test.mjs all",
+    "test:unit": "npm run build && node scripts/test.mjs unit",
+    "test:contract": "npm run build && node scripts/test.mjs contract",
+    "smoke": "npm run build && node scripts/smoke.mjs",
+    "zip": "node scripts/zip-skill.mjs",
+    "doctor": "node dist/cli/main.js doctor",
+    "setup": "node dist/cli/main.js setup",
+    "prepare": "npm run build",
+    "prepack": "npm run build",
+    "test:portable": "npm run build && node scripts/test.mjs portable",
+    "test:package": "npm run build && node scripts/check-package.mjs"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@types/node": "22.20.5",
+    "esbuild": "0.25.12",
+    "smol-toml": "1.4.2",
+    "typescript": "5.9.3",
+    "zod": "4.6.7"
+  },
+  "files": [
+    "dist",
+    "scripts/lib",
+    "skills",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
